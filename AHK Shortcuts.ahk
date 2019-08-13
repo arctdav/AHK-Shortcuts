@@ -1,5 +1,6 @@
 ﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+MsgBox, Minimize Current Window [CapsLock]`rCapsLock [Shift CapsLock]`rGoogle Search highlighted text [Ctrl g]`rMultiple Clipboard X (from 1 to 0); Copy [Ctrl X]; Paste [Ctrl Shift X]`rShow Text Stored in Each Clipboard on Notepad [Ctrl Shift c]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; CapsLock ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Minimize Current Window [CapsLock]
@@ -8,8 +9,12 @@ Capslock::WinMinimize,A
 ; CapsLock [Shift CapsLock]
 +Capslock::Capslock
 
+; Disable Ctrl Shift Shortcut
+^+::
+return
+
 ; Google Search highlighted text [Ctrl g]
-^g::
+^+g::
 {
  Send, ^c
  Sleep 50
@@ -101,6 +106,25 @@ return
 ^+0::
 SendInput {Raw}%ClipBoard_0%
 return
+
+; Show Text Stored in Each Clipboard on Notepad [Ctrl Shift c]
+
+^+c::
+{
+  Run, Notepad
+  Sleep, 1500
+  SendInput, {Text}1: %ClipBoard_1%`r
+  SendInput, {Text}2: %ClipBoard_2%`r
+  SendInput, {Text}3: %ClipBoard_3%`r
+  SendInput, {Text}4: %ClipBoard_4%`r
+  SendInput, {Text}5: %ClipBoard_5%`r
+  SendInput, {Text}6: %ClipBoard_6%`r
+  SendInput, {Text}7: %ClipBoard_7%`r
+  SendInput, {Text}8: %ClipBoard_8%`r
+  SendInput, {Text}9: %ClipBoard_9%`r
+  SendInput, {Text}0: %ClipBoard_0%`r
+  return
+}
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Helper Function ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
