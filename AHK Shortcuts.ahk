@@ -1,10 +1,13 @@
 ﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-MsgBox, Minimize Current Window [CapsLock]`rCapsLock [Shift CapsLock]`rGoogle Search highlighted text [Ctrl g]`rMultiple Clipboard X (from 1 to 0); Copy [Ctrl X]; Paste [Ctrl Shift X]`rShow Text Stored in Each Clipboard on Notepad [Ctrl Shift c]
+MsgBox, Minimize Current Window [CapsLock]`rClose Current Window[Shift Esc]`rCapsLock [Shift CapsLock]`rGoogle Search highlighted text [Ctrl g]`rMultiple Clipboard X (from 1 to 0); Copy [Ctrl X]; Paste [Ctrl Shift X]`rShow Text Stored in Each Clipboard on Notepad [Ctrl Shift c]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; CapsLock ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Minimize Current Window [CapsLock]
 Capslock::WinMinimize,A
+
+; Close Current Window [Shift ESC]
++Esc::WinClose,A
 
 ; CapsLock [Shift CapsLock]
 +Capslock::Capslock
