@@ -1,6 +1,6 @@
 ﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-MsgBox, Minimize Current Window [CapsLock]`rClose Current Window[Shift Esc]`rCapsLock [Shift CapsLock]`rGoogle Search highlighted text [Ctrl g]`rMultiple Clipboard X (from 1 to 0); Copy [Ctrl X]; Paste [Ctrl Shift X]`rShow Text Stored in Each Clipboard on Notepad [Ctrl Shift c]
+MsgBox, Minimize Current Window [CapsLock]`rClose Current Window[Shift Esc]`rCapsLock [Shift CapsLock]`rGoogle Search highlighted text [Ctrl g]`rMultiple Clipboard X (from 1 to 0); Copy [Ctrl X]; Paste [Ctrl Shift X]`rShow Text Stored in Each Clipboard on Notepad [Ctrl Shift c]`rEmpty Clipboards [Ctrl Shift e]`rOpen SnippingTool [Ctrl Shift s]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; CapsLock ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Minimize Current Window [CapsLock]
@@ -24,6 +24,13 @@ return
  Run, http://www.google.com/search?q=%clipboard%
  Return
 }
+
+^+s::
+{
+ Run, %windir%\system32\SnippingTool.exe
+ Return
+}
+
 
 
 ;;;;;;;;;;;;;;;;;;;;; Multiple Clipboard ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -115,7 +122,7 @@ return
 ^+c::
 {
   Run, Notepad
-  Sleep, 1500
+  Sleep, 500
   SendInput, {Text}1: %ClipBoard_1%`r
   SendInput, {Text}2: %ClipBoard_2%`r
   SendInput, {Text}3: %ClipBoard_3%`r
@@ -130,6 +137,22 @@ return
 }
 
 
+; Empty all Clipboards [Ctrl Shift e]
+
+^+e::
+{
+  ClipBoard_1=
+  ClipBoard_2=
+  ClipBoard_3=
+  ClipBoard_4=
+  ClipBoard_5=
+  ClipBoard_6=
+  ClipBoard_7=
+  ClipBoard_8=
+  ClipBoard_9=
+  ClipBoard_0=
+  return
+}
 ;;;;;;;;;;;;;;;;;;;;;;;; Helper Function ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Multiple Clipboard
 GetFromClipboard()
